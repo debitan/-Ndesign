@@ -41,21 +41,23 @@ class Navbar extends React.Component {
       <div
         style={{
           gridColumn: '5',
-          width: '50px',
-
+          width: '3rem',
+          height: '3rem',
         }}
       >
         <Link
           href="/"
         >
-          <img src={instagram} alt="" style={{maxHeight: '40px'}}/>
+          <img src={instagram} alt="" style={{          width: '3rem',
+          height: '3rem',}}/>
         </Link>
       </div>
       <div
         style={{
           gridColumn: '6',
           gridRow: '1',
-          width: '50px',
+          width: '3rem',
+          height: '3rem',
         }}
       >
         <Basket cart={this.props.cart}/>
