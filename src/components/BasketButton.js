@@ -3,15 +3,15 @@ import emptyShoppingBasket from '../images/empty-shopping-basket.svg'
 import fullShoppingBasket from '../images/full-shopping-basket.svg'
 
 
-const quantityOfItems = basket => {
-  let quantity = 0
-  Object.entries(basket).forEach(
-    ([key, value]) => quantity += value.quantity
-  )
-  return quantity
-}
+// const quantityOfItems = basket => {
+//   let quantity = 0
+//   Object.entries(basket).forEach(
+//     ([key, value]) => quantity += value.quantity
+//   )
+//   return quantity
+// }
 
-const Basket = class extends React.Component {
+const BasketButton = class extends React.Component {
   // Initialise Stripe.js with your publishable key.
   // You can find your key in the Dashboard:
   // https://dashboard.stripe.com/account/apikeys
@@ -51,4 +51,4 @@ const Basket = class extends React.Component {
   }
 }
 
-export default Basket
+export default BasketButton

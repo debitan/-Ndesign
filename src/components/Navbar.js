@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import BasketButton from './BasketButton'
-import instagram from '../images/instagram.svg'
+// import instagram from '../images/instagram.svg'
 
 class Navbar extends React.Component {
   render() {
