@@ -1,19 +1,37 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>ようこそ！</h1>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-    <Link to="/advanced/">ストアへ</Link>
-      <Image />
-    </div>
-  </Layout>
-)
+import Jumbotron from "../components/Jumbotron"
+import JumbotronTextOnly from "../components/JumbotronTextOnly"
+import Skus from "../components/Products/Skus"
 
-export default IndexPage
+class AdvancedExamplePage extends React.Component{
+  render() {
+    return(
+  <Layout>
+    <SEO title="±Ndesign store" />
+    <Jumbotron flowers={this.props.data.flowersImage.childImageSharp.fluid} />
+    <JumbotronTextOnly />
+    <Skus />
+  </Layout>
+    )
+    }
+}
+
+export default AdvancedExamplePage
+
+export const pageQuery = graphql`
+query {
+    flowersImage: file(relativePath: { eq: "flowers.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 960) {
+            ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
+

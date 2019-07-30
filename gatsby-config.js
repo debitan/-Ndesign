@@ -4,11 +4,20 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `ノリのを花`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `±Ndesign`,
+    description: `everythingxflowersx±Ndesign
+
+    freelance florist & art director
+    `,
+    author: `https://github.com/debitan`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-stripe`,
     {
@@ -42,7 +51,7 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
 
