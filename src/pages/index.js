@@ -1,14 +1,12 @@
 import React from "react"
-// import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import Jumbotron from "../components/Jumbotron"
-import JumbotronTextOnly from "../components/JumbotronTextOnly"
 import Skus from "../components/Products/Skus"
 
-class AdvancedExamplePage extends React.Component{
+class IndexPage extends React.Component{
   render() {
     return(
   <Layout>
@@ -20,7 +18,7 @@ class AdvancedExamplePage extends React.Component{
     }
 }
 
-export default AdvancedExamplePage
+export default IndexPage
 
 export const pageQuery = graphql`
 query {
