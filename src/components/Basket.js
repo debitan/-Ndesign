@@ -45,8 +45,7 @@ const Basket = class extends React.Component {
         <img
           src={!this.props.cart.length ? emptyShoppingBasket : fullShoppingBasket}
           onClick={event => this.redirectToCheckout(event)}
-        >
-        </img>
+        />
       </React.Fragment>
     )
   }
