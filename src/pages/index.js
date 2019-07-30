@@ -14,7 +14,6 @@ class AdvancedExamplePage extends React.Component{
   <Layout>
     <SEO title="±Ndesign store" />
     <Jumbotron flowers={this.props.data.flowersImage.childImageSharp.fluid} />
-    <JumbotronTextOnly />
     <Skus />
   </Layout>
     )

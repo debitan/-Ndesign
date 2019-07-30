@@ -7,7 +7,6 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Navbar from "./Navbar"
 import "./Ndesign-layout.css"
@@ -79,9 +78,9 @@ class Layout extends React.Component {
 }
 }
 
-// Layout.propTypes = {
-//   children: PropTypes.node.isRequired,
-// }
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+}
 
 
 export default Layout
