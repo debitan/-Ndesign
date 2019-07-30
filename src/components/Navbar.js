@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import Basket from './Basket'
+import BasketButton from './BasketButton'
 import instagram from '../images/instagram.svg'
 
 class Navbar extends React.Component {
@@ -32,13 +32,14 @@ class Navbar extends React.Component {
             textDecoration: `none`,
             borderStyle: 'ridge',
             padding: '0.1em',
+            marginLeft: '0.5em',
             gridColumn: '1',
           }}
         >
           {this.props.siteTitle}
         </Link>
       </h1>
-      <div
+      {/* <div
         style={{
           gridColumn: '5',
           width: '3rem',
@@ -51,16 +52,17 @@ class Navbar extends React.Component {
           <img src={instagram} alt="" style={{          width: '3rem',
           height: '3rem',}}/>
         </Link>
-      </div>
+      </div> */}
       <div
         style={{
           gridColumn: '6',
           gridRow: '1',
           width: '3rem',
           height: '3rem',
+          marginRight: '0.5em',
         }}
       >
-        <Basket cart={this.props.cart}/>
+        <BasketButton cart={this.props.cart}/>
       </div>
   </header>
 )
