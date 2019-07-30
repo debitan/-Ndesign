@@ -1,5 +1,7 @@
 import React from "react"
 
+import buttonStyles from '../../styles/buttonStyles'
+
 const cardStyles = {
   display: "flex",
   flexDirection: "column",
@@ -11,17 +13,6 @@ const cardStyles = {
   backgroundColor: "#fff",
   borderRadius: "6px",
   maxWidth: "300px",
-}
-const buttonStyles = {
-  fontSize: "13px",
-  textAlign: "center",
-  color: "#fff",
-  outline: "none",
-  padding: "12px",
-  boxShadow: "2px 5px 10px rgba(0,0,0,.1)",
-  backgroundColor: "rgb(255, 178, 56)",
-  borderRadius: "6px",
-  letterSpacing: "1.5px",
 }
 
 const formatPrice = (amount, currency) => {
@@ -36,17 +27,17 @@ const formatPrice = (amount, currency) => {
 const SkuCard = class extends React.Component {
     state = {
       disabled: false,
-      buttonText: 'ADD TO CART',
+      buttonText: 'Add to cart',
       paymentMessage: '',
     }
 
     resetButton() {
-      this.setState({ disabled: false, buttonText: 'ONE MORE PLEASE!' })
+      this.setState({ disabled: false, buttonText: 'One more please!' })
     }
 
     addToCart(event, skuId, quantity = 1) {
       event.preventDefault()
-      this.setState({ disabled: true, buttonText: 'ADDED...' })
+      this.setState({ disabled: true, buttonText: 'Adding...' })
       this.props.addToCart(skuId)
       setTimeout(this.resetButton.bind(this), 500)
     }
@@ -55,7 +46,7 @@ const SkuCard = class extends React.Component {
     const sku = this.props.sku
     return (
       <div style={cardStyles}>
-        <img src={sku.image} alt={sku.attributes.name}/>
+        <img style={{ maxWidth: "100%" }} src={sku.image} alt={sku.attributes.name}/>
         <h4>{sku.attributes.name}</h4>
         <p>{sku.product.metadata.description}</p>
         <p>Price: {formatPrice(sku.price, sku.currency)}</p>

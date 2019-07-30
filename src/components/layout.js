@@ -9,23 +9,54 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
-import "./layout.css"
+import Navbar from "./Navbar"
+import "./Ndesign-layout.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
+class Layout extends React.Component {
+  state = {
+    cart: [],
+  }
+
+  componentDidMount() {
+    // Get existing cart from localstorage if present.
+    const existingCart = JSON.parse(
+      localStorage.getItem('stripe_checkout_items')
+    )
+    if (existingCart && existingCart.length) {
+      this.setState({ cart: existingCart })
     }
-  `)
+  }
 
+  getCart() {
+    return this.state.cart
+  }
+
+  addToCart(newItem) {
+    let itemExisted = false
+    let updatedCart = this.state.cart.map(item => {
+      if (newItem === item.sku) {
+        itemExisted = true
+        return { sku: item.sku, quantity: ++item.quantity }
+      } else {
+        return item
+      }
+    })
+    if (!itemExisted) {
+      updatedCart = [...updatedCart, { sku: newItem, quantity: 1 }]
+    }
+    this.setState({ cart: updatedCart })
+    // Store the cart in the localStorage.
+    localStorage.setItem('stripe_checkout_items', JSON.stringify(updatedCart))
+  }
+  render() {
+    const childrenWithProps = React.Children.map(this.props.children, child => React.cloneElement(child, {
+      addToCart: this.addToCart.bind(this),
+      cart: this.state.cart,
+      getCart: this.getCart
+    }))
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Navbar siteTitle="±Ndesign" cart={this.state.cart} getCart={this.getCart} />
       <div
         style={{
           margin: `0 auto`,
@@ -34,19 +65,23 @@ const Layout = ({ children }) => {
           paddingTop: 0,
         }}
       >
-        <main>{children}</main>
+        <main>
+          {childrenWithProps}
+        </main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <a href="https://www.gatsbyjs.org">Gatsby</a> by Noinu Ltd
         </footer>
       </div>
     </>
   )
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
+
+// Layout.propTypes = {
+//   children: PropTypes.node.isRequired,
+// }
+
 
 export default Layout
