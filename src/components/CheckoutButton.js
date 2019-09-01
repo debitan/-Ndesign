@@ -1,3 +1,5 @@
+import React from 'react'
+
 const Basket = class extends React.Component {
     // Initialise Stripe.js with your publishable key.
     // You can find your key in the Dashboard:
@@ -21,18 +23,12 @@ const Basket = class extends React.Component {
       }
     }
 
-    runEmptyCart(event) {
-      event.preventDefault()
-      this.props.emptyCart()
-    }
-
     render() {
       return (
         <React.Fragment>
-          <img
-            src={!this.props.cart.length ? emptyShoppingBasket : fullShoppingBasket}
+          <button
             onClick={event => this.redirectToCheckout(event)}
-          />
+          >Checkout</button>
         </React.Fragment>
       )
     }

@@ -10,7 +10,7 @@ class BasketPage extends React.Component{
     return(
   <Layout>
     <SEO title="±Ndesign store" />
-    <BasketPageContainer />
+    <BasketPageContainer cart={this.props.cart} emptyCart={this.props.emptyCart}/>
   </Layout>
     )
     }

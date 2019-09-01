@@ -7,17 +7,3 @@ disabled={!this.props.cart.length}
 >
 Empty basket
 </button>
-
-
-// this needs to go where the state is
-
-emptyCart = () => {
-    // take a copy of current cart
-    let emptyCart = {...this.state.cart}
-    // clear the copy
-    emptyCart = []
-    // set state with copy
-    this.setState({ cart : emptyCart })
-    // clear the localStorage also
-    localStorage.removeItem('stripe_checkout_items')
-  }

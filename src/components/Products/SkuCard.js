@@ -35,10 +35,10 @@ const SkuCard = class extends React.Component {
       this.setState({ disabled: false, buttonText: 'One more please!' })
     }
 
-    addToCart(event, skuId, quantity = 1) {
+    addToCart(event, sku, quantity = 1) {
       event.preventDefault()
       this.setState({ disabled: true, buttonText: 'Adding...' })
-      this.props.addToCart(skuId)
+      this.props.addToCart(sku)
       setTimeout(this.resetButton.bind(this), 500)
     }
 
@@ -52,7 +52,7 @@ const SkuCard = class extends React.Component {
         <p>Price: {formatPrice(sku.price, sku.currency)}</p>
         <button
           style={buttonStyles}
-          onClick={event => this.addToCart(event, sku.id)}
+          onClick={event => this.addToCart(event, sku)}
           disabled={this.state.disabled}
         >
             {this.state.buttonText}
