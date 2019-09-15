@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
@@ -47,7 +48,6 @@ export default class Jumbotron extends React.Component {
                         color: 'rgb(56, 38, 40)',
                         backgroundColor: 'white',
                         fontSize: '2.5em',
-
                     }}　
                     >
                     florist x art director

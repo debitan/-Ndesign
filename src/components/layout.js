@@ -31,9 +31,10 @@ class Layout extends React.Component {
   }
 
   addToCart(newItem) {
+    console.log(newItem)
     let itemExisted = false
     let updatedCart = this.state.cart.map(item => {
-      if (newItem === item.sku) {
+      if (newItem.id === item.sku.id) {
         itemExisted = true
         return { sku: item.sku, quantity: ++item.quantity }
       } else {
@@ -45,13 +46,29 @@ class Layout extends React.Component {
     }
     this.setState({ cart: updatedCart })
     // Store the cart in the localStorage.
-    localStorage.setItem('stripe_checkout_items', JSON.stringify(updatedCart))
+    let stripeUpdatedCart = updatedCart.map(item => {
+      return { sku: item.sku.id, quantity: item.quantity }
+    })
+    localStorage.setItem('stripe_checkout_items', JSON.stringify(stripeUpdatedCart))
   }
+
+  emptyCart = () => {
+    // take a copy of current cart
+    let emptyCart = {...this.state.cart}
+    // clear the copy
+    emptyCart = []
+    // set state with copy
+    this.setState({ cart : emptyCart })
+    // clear the localStorage also
+    localStorage.removeItem('stripe_checkout_items')
+  }
+
   render() {
     const childrenWithProps = React.Children.map(this.props.children, child => React.cloneElement(child, {
       addToCart: this.addToCart.bind(this),
       cart: this.state.cart,
-      getCart: this.getCart
+      getCart: this.getCart,
+      emptyCart: this.emptyCart
     }))
   return (
     <>

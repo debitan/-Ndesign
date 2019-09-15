@@ -1,6 +1,8 @@
 import React from 'react'
 
 import styled from 'styled-components'
+import buttonStyles from '../styles/buttonStyles'
+import CheckoutButton from './CheckoutButton'
 
 const Grid = styled.div`
     display: grid;
@@ -16,7 +18,6 @@ const RightSide = styled.section`
     grid-column: 2;
 `
 
-
 class BasketPageContainer extends React.Component {
    render() {
        return(
@@ -25,6 +26,14 @@ class BasketPageContainer extends React.Component {
             <Grid>
                 <LeftSide>
                     <h2>Left side</h2>
+                    <button
+                        style={buttonStyles}
+                        onClick={event => this.props.emptyCart(event)}
+                        disabled={!this.props.cart.length}
+                    >
+                        Empty basket
+                    </button>
+                    <CheckoutButton cart={this.props.cart} />
                 </LeftSide>
                 <RightSide>
                     <h2>Right side</h2>

@@ -16,7 +16,7 @@ class Navbar extends React.Component {
       display: 'grid',
       gridTemplateColumns: 'repeat(6, 1fr)',
       gridGap: '10px',
-      gridTemplateRows: 'minmax(50px, 100px)',
+      gridTemplateRows: 'minmax(30px, 70px)',
       placeItems: 'center',
       padding: '0em 0.4em',
       position: 'sticky',
