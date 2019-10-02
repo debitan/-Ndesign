@@ -1,5 +1,5 @@
 import React from "react"
-
+import Img from 'gatsby-image'
 import buttonStyles from '../../styles/buttonStyles'
 
 const cardStyles = {
@@ -13,15 +13,6 @@ const cardStyles = {
   backgroundColor: "#fff",
   borderRadius: "6px",
   maxWidth: "300px",
-}
-
-const formatPrice = (amount, currency) => {
-  let numberFormat = new Intl.NumberFormat(["ja-JP"], {
-    style: "currency",
-    currency: currency,
-    currencyDisplay: "symbol",
-  })
-  return numberFormat.format(amount)
 }
 
 const SkuCard = class extends React.Component {
@@ -43,13 +34,13 @@ const SkuCard = class extends React.Component {
     }
 
   render() {
-    const sku = this.props.sku
+    const {title, sku, body, price, image} = this.props
     return (
       <div style={cardStyles}>
-        <img style={{ maxWidth: "100%" }} src={sku.image} alt={sku.attributes.name}/>
-        <h4>{sku.attributes.name}</h4>
-        <p>{sku.product.metadata.description}</p>
-        <p>Price: {formatPrice(sku.price, sku.currency)}</p>
+        <Img style={{ width: '100%'}} fluid={image} />
+        <h4>{title}</h4>
+        <p>{body}</p>
+        <p>¥{price}</p>
         <button
           style={buttonStyles}
           onClick={event => this.addToCart(event, sku)}
